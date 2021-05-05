@@ -18,22 +18,14 @@ public class Ciudad {
 
     public Ciudad()
     {
-    	/*Comentario de Prueba/*
+    	
     	/*
     	 * Generamos una ciudad de manera aleatoria para hacer 
     	 * pruebas.
     	 */
 ciudad = new ArrayList <Edificio>();
-int n = 5;
-int i=0;
-int xi,y,xd;
-for(i=0;i<n;i++)
-{
-xi=(int)(Math.random()*100);
-y=(int)(Math.random()*100);
-xd=(int)(xi+(Math.random()*100));
-this.addEdificio(new Edificio(xi,y,xd));
-}
+
+metodoRandom(5);
         
 ciudad = new ArrayList <Edificio>();
 }
@@ -93,8 +85,7 @@ int medio=(pi+pd)/2;
 
 LineaHorizonte s1 = this.crearLineaHorizonte(pi,medio);  
 LineaHorizonte s2 = this.crearLineaHorizonte(medio+1,pd);
-Punto a=null, b=null, aux=null;
-linea = LineaHorizonteFussion(s1,s2,a,b,aux); 
+linea = LineaHorizonteFussion(s1,s2); 
 }
 return linea;
     }
@@ -105,16 +96,18 @@ return linea;
      * edificio solapa a otro, si hay edificios contiguos, etc. y solucionar dichos
      * problemas para que el LineaHorizonte calculado sea el correcto.
      */
-    public LineaHorizonte LineaHorizonteFussion(LineaHorizonte s1,LineaHorizonte s2, Punto p1, Punto p2, Punto paux)
+    public LineaHorizonte LineaHorizonteFussion(LineaHorizonte s1,LineaHorizonte s2)
     {
     	// en estas variables guardaremos las alturas de los puntos anteriores, en s1y la del s1, en s2y la del s2 
     	// y en prev guardaremos la previa del segmento anterior introducido
+    	
         int s1y=-1, s2y=-1, prev=-1;    
         LineaHorizonte salida = new LineaHorizonte(); // LineaHorizonte de salida
         
-        p1 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s1
-        p2 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s2
+       Punto p1 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s1
+        Punto p2 = new Punto();         // punto donde guardaremos el primer punto del LineaHorizonte s2
         
+        Punto paux=null;
         System.out.println("==== S1 ====");
         s1.imprimir();
         System.out.println("==== S2 ====");
